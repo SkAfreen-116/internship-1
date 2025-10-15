@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    /* ---------- BASIC STYLES ---------- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0078d7;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0078d7;
+      border-bottom: 2px solid #0078d7;
+      padding-bottom: 5px;
+    }
+
+    .skills ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .project {
+      background-color: #e9f5ff;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, textarea, button {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---------- HEADER SECTION ---------- -->
+  <header>
+    <h1>My Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ---------- ABOUT / INTRODUCTION ---------- -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm <strong>Shaik Afreen</strong>, a passionate web developer. 
+       I enjoy building interactive, user-friendly websites.</p>
+    <p>Currently pursuing <strong>B.Tech in CSE</strong> at KKR & KSR Institute of Technology and Sciences.</p>
+  </section>
+
+  <!-- ---------- SKILLS SECTION ---------- -->
+  <section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <ul>
+      <li>HTML, CSS, and JavaScript</li>
+      <li>Python and Object-Oriented Programming</li>
+      <li>SQL and Database Management</li>
+      <li>Problem Solving and Debugging</li>
+    </ul>
+  </section>
+
+  <!-- ---------- PROJECTS SECTION ---------- -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Smart Adjustable Shoes</h3>
+        <p>IoT-based smart footwear with sensors and memory foam to auto-adjust fit for diabetic patients and athletes.</p>
+      </div>
+      <div class="project">
+        <h3>Drinking Water Availability System</h3>
+        <p>Community service project to analyze and improve drinking water facility using IoT sensors and mapping.</p>
+      </div>
+      <div class="project">
+        <h3>Personal Portfolio Website</h3>
+        <p>A responsive personal website built using HTML, CSS, and JavaScript showcasing my skills and work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT SECTION ---------- -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="#" method="post">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="yourname@example.com" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ---------- FOOTER ---------- -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
