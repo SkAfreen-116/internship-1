@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harvest & Hearth — Local Restaurant</title>
+  <meta name="description" content="Harvest & Hearth — Local neighbourhood restaurant serving seasonal dishes and handcrafted drinks." />
+  <!-- Basic Reset + Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f6f4;
+      --card:#ffffff;
+      --accent:#d97706; /* amber-600 */
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.65);
+      --radius:16px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,var(--bg),#fff);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#fb923c);box-shadow:0 6px 18px rgba(13,17,23,0.08);
+      color:white;font-weight:700;font-size:18px
+    }
+    nav.desktop{display:flex;gap:16px;align-items:center}
+    nav.desktop a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(217,119,6,0.14)}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+      border-radius:var(--radius);
+      padding:28px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:24px;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(13,17,23,0.06);
+      margin-bottom:20px;
+    }
+    .hero h1{margin:0;font-size:28px;line-height:1.05}
+    .hero p{color:var(--muted);margin:12px 0 18px}
+    .hero .buttons{display:flex;gap:12px}
+
+    /* Menu preview cards */
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px
+    }
+    .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(13,17,23,0.04)}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+
+    /* Contact + Footer */
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .contact-form input,.contact-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e7ea;margin-top:8px}
+    .contact-form button{margin-top:10px;padding:12px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700}
+    footer{margin-top:22px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+
+    /* Mobile Nav */
+    .mobile-nav{display:none}
+    .hamburger{display:none;background:transparent;border:0}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .two-col{grid-template-columns:1fr}
+      nav.desktop{display:none}
+      .hamburger{display:block}
+      .mobile-nav{display:flex;gap:10px}
+    }
+    @media (max-width:560px){
+      body{padding:16px}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:22px}
+      .logo{width:48px;height:48px;font-size:16px}
+    }
+
+    /* Small visual flourishes */
+    .badge{display:inline-block;background:rgba(249,115,22,0.12);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    .muted{color:var(--muted)}
+    .dish{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed #f0f0f0}
+    .dish:last-child{border-bottom:0}
+
+    /* Accessible focus */
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(217,119,6,0.18);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="#" class="brand" aria-label="Harvest & Hearth home">
+        <div class="logo">H&H</div>
+        <div>
+          <div style="font-weight:800">Harvest & Hearth</div>
+          <div style="font-size:12px;color:var(--muted)">Seasonal • Local • Handcrafted</div>
+        </div>
+      </a>
+
+      <nav class="desktop" aria-label="Primary navigation">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#book">Reserve</a>
+      </nav>
+
+      <div class="mobile-controls">
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </header>
+
+    <div id="mobileMenu" class="mobile-nav" style="display:none;flex-direction:column;margin-bottom:14px">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a class="cta" href="#book">Reserve</a>
+    </div>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div>
+          <span class="badge">New seasonal menu</span>
+          <h1 id="heroTitle">Warm food, warm welcomes — modern comfort from local farms.</h1>
+          <p>Located in the heart of town — daily breakfast, brunch and dinner. Farm-to-table ingredients, vegan and gluten-free options available.</p>
+          <div class="buttons">
+            <a class="cta" href="#menu">See Menu</a>
+            <a href="#book" style="display:inline-flex;align-items:center;padding:10px 14px;border-radius:10px;border:1px solid #efecef;text-decoration:none;font-weight:700">Order Online</a>
+          </div>
+
+          <div style="margin-top:18px">
+            <strong>Hours</strong>
+            <div class="muted">Mon–Fri: 8am–9pm • Sat–Sun: 8am–11pm</div>
+          </div>
+        </div>
+
+        <aside style="display:flex;flex-direction:column;gap:12px">
+          <div style="background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+            <div style="font-weight:800">Today's Special</div>
+            <div class="muted">Roasted beet & quinoa salad • citrus vinaigrette</div>
+            <div style="margin-top:6px;font-weight:800">₹349</div>
+            <a href="#menu" style="margin-top:8px;text-decoration:none;font-weight:700">Order this</a>
+          </div>
+
+          <div style="background:var(--glass);padding:12px;border-radius:12px;backdrop-filter: blur(6px);">
+            <div style="font-weight:700">Delivery</div>
+            <div class="muted">We deliver within 5 km. Free delivery on orders above ₹599.</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="menu" style="margin-top:14px">
+        <h2 style="margin:0 0 10px">Popular Picks</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Smoky Paneer Wrap</h3>
+            <p class="muted">Grilled paneer, smoked spices, seasonal greens</p>
+            <div style="margin-top:12px;font-weight:800">₹199</div>
+          </article>
+
+          <article class="card">
+            <h3>Herb Roast Chicken</h3>
+            <p class="muted">Slow-roasted with lemon & thyme</p>
+            <div style="margin-top:12px;font-weight:800">₹449</div>
+          </article>
+
+          <article class="card">
+            <h3>Butterscotch Pudding</h3>
+            <p class="muted">Creamy, house-made with crunchy praline</p>
+            <div style="margin-top:12px;font-weight:800">₹129</div>
+          </article>
+        </div>
+
+        <h3 style="margin-top:8px">Full Menu</h3>
+        <div class="card" style="margin-top:8px">
+          <div class="dish"><div>Avocado Toast</div><div>₹179</div></div>
+          <div class="dish"><div>Farm Veggie Bowl</div><div>₹249</div></div>
+          <div class="dish"><div>Spiced Lamb Chops</div><div>₹699</div></div>
+          <div class="dish"><div>Classic Margherita</div><div>₹299</div></div>
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:18px">
+        <h2>About Us</h2>
+        <div class="card" style="margin-top:8px">
+          <p class="muted">Harvest & Hearth started as a small neighbourhood kitchen with a passion for fresh ingredients. We partner with nearby farmers and artisans to create a menu that changes with the seasons. We focus on sustainability, minimal food waste, and a welcoming dining experience.</p>
+        </div>
+      </section>
+
+      <section id="gallery" style="margin-top:18px">
+        <h2>Gallery</h2>
+        <div class="gallery" aria-hidden="false">
+          <img alt="Dish 1" src="https://images.unsplash.com/photo-1543353071-087092ec393b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+          <img alt="Dish 2" src="https://images.unsplash.com/photo-1512058564366-c9e3b4c5b610?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+          <img alt="Interior" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+          <img alt="Coffee" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px">
+        <h2>Contact & Reservations</h2>
+        <div class="two-col">
+          <div class="card">
+            <p style="margin:0"><strong>Address</strong></p>
+            <div class="muted" style="margin-bottom:10px">24 Main Street, Chilakaluripet</div>
+            <p style="margin:0"><strong>Phone</strong></p>
+            <div class="muted">+91 98765 43210</div>
+
+            <div style="margin-top:12px">
+              <strong>Opening Hours</strong>
+              <div class="muted">Mon–Fri: 8am–9pm • Sat–Sun: 8am–11pm</div>
+            </div>
+
+            <div style="margin-top:12px">
+              <strong>Find us</strong>
+              <div style="margin-top:8px">
+                <!-- Map placeholder: swap with real embed or iframe -->
+                <div style="width:100%;height:180px;border-radius:10px;background:#f2f3f5;display:flex;align-items:center;justify-content:center;color:var(--muted)">Map / Embed here</div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form card" onsubmit="submitForm(event)">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your full name" required>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+
+            <label for="message">Message / Reservation details</label>
+            <textarea id="message" rows="5" placeholder="Date, time, number of guests..." required></textarea>
+
+            <button type="submit">Send Request</button>
+            <div id="formMsg" style="margin-top:10px;color:var(--muted)"></div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Harvest & Hearth • All rights reserved</div>
+      <div class="muted">Made with ♥ • Local & sustainable</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small JS for interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function toggleMobileMenu(){
+      const mm = document.getElementById('mobileMenu');
+      mm.style.display = mm.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const msgDiv = document.getElementById('formMsg');
+
+      // rudimentary validation & fake submit (replace with real API endpoint)
+      if(!name||!email||!message){ msgDiv.textContent = 'Please fill all fields.'; return }
+      msgDiv.textContent = 'Sending...';
+
+      // simulate async send — NOTE: replace with fetch POST to your server
+      setTimeout(()=>{
+        msgDiv.textContent = 'Thanks! Your request has been received. We will contact you soon.';
+        e.target.reset();
+      },900);
+    }
+
+    // Accessibility: close mobile menu on outside click
+    document.addEventListener('click', (ev)=>{
+      const mm = document.getElementById('mobileMenu');
+      const ham = ev.target.closest('.hamburger');
+      if(!ham && mm && mm.style.display==='flex' && !ev.target.closest('#mobileMenu')){
+        mm.style.display='none';
+      }
+    });
+  </script>
+</body>
+</html>
