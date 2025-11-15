@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Blog - CRUD with Local Storage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h1 { text-align: center; }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+    }
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .post {
+      background: #fafafa;
+      padding: 15px;
+      margin-top: 20px;
+      border-left: 4px solid #007bff;
+      border-radius: 5px;
+    }
+    .actions button {
+      margin-right: 10px;
+      background: #28a745;
+    }
+    .delete-btn { background: #dc3545 !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Blog</h1>
+
+    <h3>Create / Edit Post</h3>
+    <input type="text" id="title" placeholder="Enter Post Title" />
+    <textarea id="content" placeholder="Enter Post Content"></textarea>
+    <button onclick="savePost()">Save Post</button>
+
+    <h2>All Posts</h2>
+    <div id="posts"></div>
+  </div>
+
+  <script>
+    let editId = null;
+
+    function loadPosts() {
+      const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+      const container = document.getElementById('posts');
+      container.innerHTML = '';
+
+      posts.forEach((post, index) => {
+        container.innerHTML += `
+          <div class="post">
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <div class="actions">
+              <button onclick="editPost(${index})">Edit</button>
+              <button class="delete-btn" onclick="deletePost(${index})">Delete</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function savePost() {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+
+      if (!title || !content) {
+        alert('Please enter both title and content');
+        return;
+      }
+
+      let posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+
+      if (editId !== null) {
+        posts[editId] = { title, content };
+        editId = null;
+      } else {
+        posts.push({ title, content });
+      }
+
+      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+      loadPosts();
+    }
+
+    function editPost(index) {
+      const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+      document.getElementById('title').value = posts[index].title;
+      document.getElementById('content').value = posts[index].content;
+      editId = index;
+    }
+
+    function deletePost(index) {
+      let posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+      posts.splice(index, 1);
+      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      loadPosts();
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
